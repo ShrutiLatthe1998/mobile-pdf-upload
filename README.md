@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# React PDF Signer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A sleek and modern web application built with React and Material-UI that empowers users to upload, preview, and digitally sign PDF documents quickly and securely. Designed with a mobile-first approach, it offers a seamless and appealing experience on smartphones, tablets, and desktop devices.
 
-## Available Scripts
+***
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Intuitive step-wise interface** guiding users through upload, sign, and completion stages.
+- **Responsive design** optimized for all screen sizes, from mobile to desktop.
+- **Flexible PDF upload** via drag-and-drop or file selection.
+- **Instant in-browser PDF preview** before and after signing.
+- **Digital signing** embedding a custom, Unicode-supporting checkmark.
+- **Visual progress bar** with descriptive icons and connecting lines for clarity.
+- **Lightweight and easy to customize** through `App.js` styling.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+***
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation \& Setup
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Node.js](https://nodejs.org/) (version 14 or higher recommended)
+- npm (comes with Node.js)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Get the code
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/ShrutiLatthe1998/mobile-pdf-upload
+cd <your-repo-folder>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Install dependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Add the custom font
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Place the font file `OpenSans-Regular.ttf` inside the `/public` directory of the project root. This ensures the font is accessible for embedding into PDFs.
 
-## Learn More
+### Start the development server
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Visit [http://localhost:3000](http://localhost:3000) in your browser to use the app.
 
-### Code Splitting
+***
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Usage
 
-### Analyzing the Bundle Size
+1. **Upload PDF:** Click “Choose File” or drag and drop a PDF to upload. The file name will display for confirmation.
+2. **Sign PDF:** After uploading, click “Sign PDF” to digitally sign the document with a visible checkmark.
+3. **View Signed PDF:** The signed PDF appears in a preview pane for immediate review.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+***
 
-### Making a Progressive Web App
+## Customization
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Modify the UI styles, colors, and layout directly in `App.js`.
+- Swap the embedded font by replacing the `/public/OpenSans-Regular.ttf` file and update the font import path accordingly.
+- Extend functionality by adding features like multiple signatures, download options, or cloud storage integration.
 
-### Advanced Configuration
+***
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Notes
 
-### Deployment
+- This project depends on `@mui/material`, `@mui/icons-material`, `pdf-lib`, and `@pdf-lib/fontkit`.
+- Ensure your embedded font includes all necessary Unicode glyphs.
+- For production use, consider adding error handling, input validation, and accessibility enhancements.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+***
 
-### `npm run build` fails to minify
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+***
+
+Enjoy a smooth and efficient way to sign PDFs directly within your browser!
+
