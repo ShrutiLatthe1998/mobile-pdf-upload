@@ -79,10 +79,6 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser to use the 
 
 ***
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ***
 
 Enjoy a smooth and efficient way to sign PDFs directly within your browser!
