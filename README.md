@@ -30,7 +30,7 @@ A sleek and modern web application built with React and Material-UI that empower
 
 ```bash
 git clone https://github.com/ShrutiLatthe1998/mobile-pdf-upload
-cd <your-repo-folder>
+cd mobile-pdf-upload
 ```
 
 
