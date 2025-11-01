@@ -13,11 +13,13 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { PDFDocument, rgb } from "pdf-lib";
 import fontkit from "@pdf-lib/fontkit";
 
+
 const STEP = {
   UPLOAD: 0,
   SIGN: 1,
   COMPLETE: 2,
 };
+
 
 function MobileUploadApp() {
   const [pdfFile, setPdfFile] = useState(null);
@@ -26,7 +28,9 @@ function MobileUploadApp() {
   const [currentStep, setCurrentStep] = useState(STEP.UPLOAD);
   const [pdfPreviewUrl, setPdfPreviewUrl] = useState(""); // unsigned file preview
 
+
   const theme = useTheme();
+
 
   // Handle uploading PDF, show preview, set step to SIGN
   const handleFileChange = (event) => {
@@ -43,9 +47,11 @@ function MobileUploadApp() {
     }
   };
 
+
   const mockSignPdf = async (file) => {
     const arrayBuffer = await file.arrayBuffer();
     const pdfDoc = await PDFDocument.load(arrayBuffer);
+
 
     pdfDoc.registerFontkit(fontkit);
     const fontBytes = await fetch("/OpenSans-Regular.ttf").then((res) =>
@@ -53,21 +59,24 @@ function MobileUploadApp() {
     );
     const customFont = await pdfDoc.embedFont(fontBytes);
 
+
     const pages = pdfDoc.getPages();
     const firstPage = pages[0];
     const { width } = firstPage.getSize();
     firstPage.drawText("Signed PDF", {
-      x: width - 140,
+      x: width - 150,
       y: 30,
       size: 24,
       font: customFont,
       color: rgb(0, 0.53, 0.71),
     });
 
+
     const pdfBytes = await pdfDoc.save();
     const signedBlob = new Blob([pdfBytes], { type: "application/pdf" });
     return URL.createObjectURL(signedBlob);
   };
+
 
   const handleSignPdf = async () => {
     if (!pdfFile) {
@@ -87,6 +96,7 @@ function MobileUploadApp() {
     }
   };
 
+
   const icons = [
     {
       label: "Upload",
@@ -102,11 +112,13 @@ function MobileUploadApp() {
     },
   ];
 
+
   const stepColors = {
     active: "#0cbfd4",
     inactive: "#e7ecf2",
     complete: "#22c55e",
   };
+
 
   const getStepColor = (stepIdx) => {
     if (stepIdx < currentStep) return stepColors.complete;
@@ -116,7 +128,9 @@ function MobileUploadApp() {
   const iconColor = (stepIdx) =>
     stepIdx < currentStep || stepIdx === currentStep ? "#fff" : "#b0b6bc";
 
+
   const previewHeight = `calc(min(65vh, 380px))`;
+
 
   return (
     <Box
@@ -136,6 +150,7 @@ function MobileUploadApp() {
           Securely upload and digitally sign your PDF documents instantly
         </Typography>
       </Box>
+
 
       {/* Custom Progress Bar */}
       <Box
@@ -203,6 +218,7 @@ function MobileUploadApp() {
         ))}
       </Box>
 
+
       {/* Centered Upload/Sign/Preview Card */}
       <Paper
         elevation={3}
@@ -266,6 +282,7 @@ function MobileUploadApp() {
           </>
         )}
 
+
         {/* Sign step: show file details, unsigned preview, and sign button */}
         {pdfFile && currentStep === STEP.SIGN && (
           <>
@@ -321,7 +338,8 @@ function MobileUploadApp() {
           </>
         )}
 
-        {/* Complete step: show signed preview */}
+
+        {/* Complete step: show signed preview with Sign Another button */}
         {pdfFile && signedPdfUrl && currentStep === STEP.COMPLETE && (
           <Box
             sx={{
@@ -361,8 +379,24 @@ function MobileUploadApp() {
                 }}
               />
             </Box>
+
+            <Button
+              variant="outlined"
+              color="primary"
+              sx={{ mt: 4 }}
+              onClick={() => {
+                setPdfFile(null);
+                setSignedPdfUrl("");
+                setLoading(false);
+                setCurrentStep(STEP.UPLOAD);
+                setPdfPreviewUrl("");
+              }}
+            >
+              Sign Another PDF
+            </Button>
           </Box>
         )}
+
         {loading && (
           <Box sx={{ mt: 2 }}>
             <CircularProgress color="success" />
@@ -372,5 +406,6 @@ function MobileUploadApp() {
     </Box>
   );
 }
+
 
 export default MobileUploadApp;
